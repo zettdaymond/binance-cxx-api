@@ -10,7 +10,7 @@
 #include "binance_utils.h"
 
 #include <fstream>
-#include <wordexp.h>
+//#include <wordexp.h>
 
 using namespace binance;
 using namespace std;
@@ -23,35 +23,35 @@ binance::Account::Account(const binance::Server& server_, const string api_key_,
 hostname(server_.getHostname()), server(server_), api_key(api_key_), secret_key(secret_key_)
 
 {
-	if (api_key == "")
-	{
-		wordexp_t p;
-		char** w;
-		wordexp(default_api_key_path.c_str(), &p, 0);
-		w = p.we_wordv;
-		ifstream binanceapi(w[0]);
-		if (binanceapi.is_open())
-		{
-			binanceapi >> api_key;
-			binanceapi.close();
-		}
-		wordfree(&p);
-	}
+//	if (api_key == "")
+//	{
+//		wordexp_t p;
+//		char** w;
+//		wordexp(default_api_key_path.c_str(), &p, 0);
+//		w = p.we_wordv;
+//		ifstream binanceapi(w[0]);
+//		if (binanceapi.is_open())
+//		{
+//			binanceapi >> api_key;
+//			binanceapi.close();
+//		}
+//		wordfree(&p);
+//	}
 
-	if (secret_key == "")
-	{
-		wordexp_t p;
-		char** w;
-		wordexp(default_secret_key_path.c_str(), &p, 0);
-		w = p.we_wordv;
-		ifstream binanceapi(w[0]);
-		if (binanceapi.is_open())
-		{
-			binanceapi >> secret_key;
-			binanceapi.close();
-		}
-		wordfree(&p);
-	}
+//	if (secret_key == "")
+//	{
+//		wordexp_t p;
+//		char** w;
+//		wordexp(default_secret_key_path.c_str(), &p, 0);
+//		w = p.we_wordv;
+//		ifstream binanceapi(w[0]);
+//		if (binanceapi.is_open())
+//		{
+//			binanceapi >> secret_key;
+//			binanceapi.close();
+//		}
+//		wordfree(&p);
+//	}
 }
 
 bool binance::Account::keysAreSet() const
